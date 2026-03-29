@@ -7,6 +7,7 @@ Any info about starter code: none
 Date: 03/29/2026 """
 
 import pathlib
+import string
 
 
 class WordAnalyzer:
@@ -14,7 +15,37 @@ class WordAnalyzer:
     def __init__(self, filepath):
         self.__pathlibrary = pathlib.Path(filepath) 
         self.__frequencies = {}    
-         
+
+    def process_file(self):
+        try:
+            if not self.__filepath.exists():
+                raise FileNotFoundError(f"File '{self.__filepath}' does not exist.")
+            
+            translation_table = str.maketrans('', '', string.punctuation)
+            
+            with self.__filepath.open('r') as file:
+                for line in file:
+
+                    line = line.translate(translation_table).lower()
+                    
+                    words = line.split()
+
+                    for word in words:
+                        if word in self.__frequencies:
+                            self.__frequencies[word] += 1
+                        else:
+                            self.__frequencies[word] = 1
+
+
+
+
+
+
+
+
+        
+
+
 
 
 
