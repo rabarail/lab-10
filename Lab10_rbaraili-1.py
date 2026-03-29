@@ -6,4 +6,15 @@ word selected file and prints alphabetical report.
 Any info about starter code: none
 Date: 03/29/2026 """
 
+import pathlib
+
+
+class WordAnalyzer:
+
+    def __init__(self, filepath):
+        self.__pathlibrary = pathlib.Path(filepath) 
+        self.__frequencies = {}    
+         
+
+
 
