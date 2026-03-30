@@ -6,7 +6,9 @@ word selected file and prints alphabetical report.
 Any info about starter code: none
 Date: 03/29/2026 """
 
+from importlib.resources import path
 import pathlib
+from secrets import choice
 import string
 
 
@@ -48,13 +50,14 @@ class WordAnalyzer:
 
 def main():
 
-    book_menu = pathlib.Path("books")
+    base_path = pathlib.Path(__file__).parent
+    book_path = base_path / "books"
 
     file_menu = {
-    "1": ("Princess Mars",   book_menu / "princess_mars.txt"),
-    "2": ("Tarzan",          book_menu / "Tarzan.txt"),
-    "3": ("Treasure Island", book_menu / "treasure_island.txt"),
-    "4": ("Monte Cristo",    book_menu / "monte_cristo.txt"),
+    "1": ("Princess Mars",   book_path / "princess_mars.txt"),
+    "2": ("Tarzan",          book_path / "Tarzan.txt"),
+    "3": ("Treasure Island", book_path / "treasure_island.txt"),
+    "4": ("Monte Cristo",    book_path / "monte_cristo.txt"),
 }
     
     while True:
@@ -63,7 +66,27 @@ def main():
 
         for key, (title, __path__) in __file__menu.items():
             print(f"{key}. {title}")
-        print("5. Exit")
+        print("5. Exit")    
+
+        choice = input("Enter your choice (1-5): ")
+
+        if choice == "5":
+            print("Exiting...")
+            break
+        elif choice in file_menu:
+             title, path = file_menu[choice]
+
+        analyzer = WordAnalyzer(path)
+
+        if analyzer.process_file():
+            analyzer.print_report()
+
+        else:
+            print(f"Could not process {title}. File may not exist.")
+            print("Press Enter to return to the menu... ")
+
+
+
 
 
 
