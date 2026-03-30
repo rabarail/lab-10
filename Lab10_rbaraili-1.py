@@ -46,6 +46,8 @@ class WordAnalyzer:
         for word in sorted_words:
             print(f"{word}: {self.__frequencies[word]}")
 
+            
+
 
 
 
