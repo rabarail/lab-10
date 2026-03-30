@@ -57,6 +57,13 @@ def main():
     "4": ("Monte Cristo",    book_menu / "monte_cristo.txt"),
 }
     
+    while True:
+        print("---Word Analyzer---")
+        print("Please select a file to analyze:")
+
+        for key, (title, __path__) in __file__menu.items():
+            print(f"{key}. {title}")
+        print("5. Exit")
 
 
 
