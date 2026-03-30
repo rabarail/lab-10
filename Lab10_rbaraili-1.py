@@ -27,7 +27,6 @@ class WordAnalyzer:
                 for line in file:
 
                     line = line.translate(translation_table).lower()
-                    
                     words = line.split()
 
                     for word in words:
@@ -35,6 +34,18 @@ class WordAnalyzer:
                             self.__frequencies[word] += 1
                         else:
                             self.__frequencies[word] = 1
+
+            return True
+        except FileNotFoundError:
+            return False
+        
+    def print_report(self):
+
+        sorted_words = sorted(self.__frequencies.keys())
+        
+        for word in sorted_words:
+            print(f"{word}: {self.__frequencies[word]}")
+
 
 
 
