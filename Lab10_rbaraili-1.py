@@ -46,7 +46,18 @@ class WordAnalyzer:
         for word in sorted_words:
             print(f"{word}: {self.__frequencies[word]}")
 
-            
+def main():
+
+    book_menu = pathlib.Path("books")
+
+    file_menu = {
+    "1": ("Princess Mars",   book_menu / "princess_mars.txt"),
+    "2": ("Tarzan",          book_menu / "Tarzan.txt"),
+    "3": ("Treasure Island", book_menu / "treasure_island.txt"),
+    "4": ("Monte Cristo",    book_menu / "monte_cristo.txt"),
+}
+    
+
 
 
 
